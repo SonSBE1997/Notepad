@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -40,7 +41,7 @@ namespace Nodepad
                 txbData.Text = OpenFileDocument.Instance.OpenFile(App.FileName, Encoding.UTF8);
                 this.Title = GetFileName(fileLocation);
             }
-
+            txbData.Focus();
         }
         #endregion
 
@@ -102,7 +103,6 @@ namespace Nodepad
             return (txbData.Text.Equals("") == false && this.Title == "Untitled - Notepad");
         }
 
-        //Lỗi ở hàm này
         bool CheckSaveWithName()
         {
             if (this.Title != "Untitled - Notepad")
@@ -197,11 +197,84 @@ namespace Nodepad
             SaveFile();
         }
 
+        private void PageSetupCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+
+        }
+
         private void ExitCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             //Application.Current.Shutdown();
             Environment.Exit(0);
         }
+        #endregion
+
+        #region Menu - Edit
+
+        //Delete can excute
+        private void DeleteCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            if (txbData.SelectionLength > 0) e.CanExecute = true;
+        }
+
+        //Delete excuted
+        private void DeleteCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            txbData.SelectedText.Remove(txbData.SelectionStart, txbData.SelectionLength);
+
+        }
+
+        //Find and Find Next can excute
+        private void FindCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            if (txbData.Text.Length > 0) e.CanExecute = true;
+        }
+
+        private void FindCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+
+        }
+
+        private void FindNextCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+
+        }
+
+
+        private void ReplaceCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+
+        }
+
+        private void GotoCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+
+        }
+
+        private void TimeDateCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            txbData.Text += DateTime.Now.ToString("h:mm tt M/d/yyyy");
+        }
+        #endregion
+
+        #region Menu - Format
+        private void FontCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+
+        }
+        #endregion
+
+        #region Menu - Help
+        private void ViewHelpCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://answers.microsoft.com/en-us/windows/forum/apps_windows_10?auth=1");
+        }
+
+        private void AboutNotepadCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+
+        }
+
         #endregion
     }
 }

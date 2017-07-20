@@ -10,16 +10,6 @@
         Icon="Resource/notepad.ico" 
         Closing="Window_Closing"
         Loaded="Window_Loaded">
-    <!--Resoure-->
-    <Window.Resources>
-        <Style TargetType="MenuItem" x:Key="menu-item">
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="true">
-                    <Setter Property="Background" Value="#e3ecf9"></Setter>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-    </Window.Resources>
     <!--CommandBinding-->
     <Window.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Print" CanExecute="CommandBinding_CanExecute" Executed="PrintCommandBinding_Executed"></CommandBinding>
@@ -27,7 +17,20 @@
         <CommandBinding Command="ApplicationCommands.Open" CanExecute="CommandBinding_CanExecute" Executed="OpenCommandBinding_Executed" ></CommandBinding>
         <CommandBinding Command="ApplicationCommands.Save" CanExecute="CommandBinding_CanExecute" Executed="SaveCommandBinding_Executed" ></CommandBinding>
         <CommandBinding Command="ApplicationCommands.SaveAs" CanExecute="CommandBinding_CanExecute" Executed="SaveAsCommandBinding_Executed" ></CommandBinding>
+        <CommandBinding Command="self:CustomCommand.PageSetup" CanExecute="CommandBinding_CanExecute"  Executed="PageSetupCommandBinding_Executed"></CommandBinding>
         <CommandBinding Command="self:CustomCommand.Exit" CanExecute="CommandBinding_CanExecute" Executed="ExitCommandBinding_Executed"></CommandBinding>
+
+        <CommandBinding Command="ApplicationCommands.Delete" CanExecute="DeleteCommandBinding_CanExecute" Executed="DeleteCommandBinding_Executed"></CommandBinding>
+        <CommandBinding Command="ApplicationCommands.Find" CanExecute="FindCommandBinding_CanExecute" Executed="FindCommandBinding_Executed"></CommandBinding>
+        <CommandBinding Command="self:CustomCommand.FindNext" CanExecute="FindCommandBinding_CanExecute" Executed="FindNextCommandBinding_Executed"></CommandBinding>
+        <CommandBinding Command="ApplicationCommands.Replace" CanExecute="CommandBinding_CanExecute" Executed="ReplaceCommandBinding_Executed"></CommandBinding>
+        <CommandBinding Command="self:CustomCommand.Goto" CanExecute="CommandBinding_CanExecute" Executed="GotoCommandBinding_Executed"></CommandBinding>
+        <CommandBinding Command="self:CustomCommand.TimeDate" CanExecute="CommandBinding_CanExecute" Executed="TimeDateCommandBinding_Executed"></CommandBinding>
+
+        <CommandBinding Command="self:CustomCommand.Font" CanExecute="CommandBinding_CanExecute" Executed="FontCommandBinding_Executed"></CommandBinding>
+
+        <CommandBinding Command="self:CustomCommand.ViewHelp" CanExecute="CommandBinding_CanExecute" Executed="ViewHelpCommandBinding_Executed"></CommandBinding>
+        <CommandBinding Command="self:CustomCommand.AboutNotepad" CanExecute="CommandBinding_CanExecute" Executed="AboutNotepadCommandBinding_Executed"></CommandBinding>
     </Window.CommandBindings>
     <DockPanel>
         <!--Menu-->
@@ -56,39 +59,47 @@
                         <MenuItem Header="De_lete" Command="ApplicationCommands.Delete"></MenuItem>
                         <Separator></Separator>
                         <MenuItem Header="_Find..." Command="ApplicationCommands.Find"></MenuItem>
-                        <MenuItem Header="Find _Next"></MenuItem>
+                        <MenuItem Header="Find _Next" Command="self:CustomCommand.FindNext"></MenuItem>
                         <MenuItem Header="_Replace..." Command="ApplicationCommands.Replace"></MenuItem>
-                        <MenuItem Header="_Go To..."></MenuItem>
+                        <MenuItem Header="_Go To..." Command="self:CustomCommand.Goto"></MenuItem>
                         <Separator></Separator>
                         <MenuItem Header="Select _All" Command="ApplicationCommands.SelectAll"></MenuItem>
-                        <MenuItem Header="Time/_Date" ></MenuItem>
+                        <MenuItem Header="Time/_Date" Command="self:CustomCommand.TimeDate"></MenuItem>
                     </MenuItem>
                     <!--Format-->
                     <MenuItem Header="F_ormat" Style="{StaticResource ResourceKey=menu-item}">
-                        <MenuItem Header="_Word Wrap"></MenuItem>
-                        <MenuItem Header="_Font..."></MenuItem>
+                        <MenuItem x:Name="mniWordWrap" Header="_Word Wrap" IsCheckable="True"></MenuItem>
+                        <MenuItem Header="_Font..." Command="self:CustomCommand.Font"></MenuItem>
                     </MenuItem>
                     <!--View-->
                     <MenuItem Header="_View" Style="{StaticResource ResourceKey=menu-item}">
-                        <MenuItem Header="_Status Bar"></MenuItem>
+                        <MenuItem Header="_Status Bar"  IsCheckable="True"></MenuItem>
                     </MenuItem>
                     <!--Help-->
                     <MenuItem Header="_Help" Style="{StaticResource ResourceKey=menu-item}">
-                        <MenuItem Header="View _Help"></MenuItem>
+                        <MenuItem Header="View _Help" Command="self:CustomCommand.ViewHelp"></MenuItem>
                         <Separator></Separator>
-                        <MenuItem Header="_About Notepad"></MenuItem>
+                        <MenuItem Header="_About Notepad" Command="self:CustomCommand.AboutNotepad"></MenuItem>
                     </MenuItem>
                 </Menu>
             </Border>
         </Grid>
 
-        <!--Text Document-->
-        <TextBox x:Name="txbData" 
+        <!--Content-->
+        <Grid x:Name="gridContent">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"></RowDefinition>
+                <!--<RowDefinition Height="20" x:Name="row"></RowDefinition>-->
+            </Grid.RowDefinitions>
+            <!--Text Document-->
+            <TextBox x:Name="txbData"
                  AcceptsReturn="True" AcceptsTab="True" 
                  ScrollViewer.CanContentScroll="True" 
                  VerticalScrollBarVisibility="Visible"
                  Focusable="True"
                  HorizontalScrollBarVisibility="Visible"
                  />
+            <!--<StatusBar x:Name="status" Height="20" Grid.Row="1" Visibility="Collapsed"/>-->
+        </Grid>
     </DockPanel>
 </Window>

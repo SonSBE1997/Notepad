@@ -4,6 +4,23 @@
              xmlns:local="clr-namespace:Nodepad"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style TargetType="MenuItem" x:Key="menu-item">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Background" Value="#e3ecf9"></Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <!--data trigger - textbox-->
+        <Style TargetType="TextBox">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding ElementName=mniWordWrap , Path=IsChecked}" Value="True">
+                    <Setter Property="TextWrapping" Value="Wrap"></Setter>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding ElementName=mniWordWrap , Path=IsChecked}" Value="False">
+                    <Setter Property="TextWrapping" Value="NoWrap"></Setter>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
     </Application.Resources>
 </Application>
