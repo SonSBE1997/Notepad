@@ -1,0 +1,94 @@
+﻿<Window x:Class="Nodepad.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Nodepad"
+        xmlns:self="clr-namespace:Nodepad.DAO"
+        mc:Ignorable="d"
+        Title="Untitled - Notepad" Height="350" Width="500" 
+        Icon="Resource/notepad.ico" 
+        Closing="Window_Closing"
+        Loaded="Window_Loaded">
+    <!--Resoure-->
+    <Window.Resources>
+        <Style TargetType="MenuItem" x:Key="menu-item">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Background" Value="#e3ecf9"></Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <!--CommandBinding-->
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Print" CanExecute="CommandBinding_CanExecute" Executed="PrintCommandBinding_Executed"></CommandBinding>
+        <CommandBinding Command="ApplicationCommands.New" CanExecute="CommandBinding_CanExecute" Executed="NewCommandBinding_Executed" ></CommandBinding>
+        <CommandBinding Command="ApplicationCommands.Open" CanExecute="CommandBinding_CanExecute" Executed="OpenCommandBinding_Executed" ></CommandBinding>
+        <CommandBinding Command="ApplicationCommands.Save" CanExecute="CommandBinding_CanExecute" Executed="SaveCommandBinding_Executed" ></CommandBinding>
+        <CommandBinding Command="ApplicationCommands.SaveAs" CanExecute="CommandBinding_CanExecute" Executed="SaveAsCommandBinding_Executed" ></CommandBinding>
+        <CommandBinding Command="self:CustomCommand.Exit" CanExecute="CommandBinding_CanExecute" Executed="ExitCommandBinding_Executed"></CommandBinding>
+    </Window.CommandBindings>
+    <DockPanel>
+        <!--Menu-->
+        <Grid DockPanel.Dock="Top" VerticalAlignment="Top">
+            <Border BorderThickness="0,0,0,1" BorderBrush="#fff">
+                <Menu Background="White">
+                    <!--File-->
+                    <MenuItem Header="_File" Style="{StaticResource ResourceKey=menu-item}">
+                        <MenuItem Header="_New" Command="ApplicationCommands.New"></MenuItem>
+                        <MenuItem Header="_Open" Command="ApplicationCommands.Open"></MenuItem>
+                        <MenuItem Header="_Save" Command="ApplicationCommands.Save"></MenuItem>
+                        <MenuItem Header="Save _As..." Command="ApplicationCommands.SaveAs"></MenuItem>
+                        <Separator></Separator>
+                        <MenuItem Header="Page Set_up..."></MenuItem>
+                        <MenuItem Header="_Print..." Command="ApplicationCommands.Print"></MenuItem>
+                        <Separator></Separator>
+                        <MenuItem Header="E_xit" Command="self:CustomCommand.Exit"></MenuItem>
+                    </MenuItem>
+                    <!--Edit-->
+                    <MenuItem Header="_Edit" Style="{StaticResource ResourceKey=menu-item}">
+                        <MenuItem Header="_Undo" Command="ApplicationCommands.Undo"></MenuItem>
+                        <Separator></Separator>
+                        <MenuItem Header="Cu_t" Command="ApplicationCommands.Cut"></MenuItem>
+                        <MenuItem Header="_Copy" Command="ApplicationCommands.Copy"></MenuItem>
+                        <MenuItem Header="_Paste" Command="ApplicationCommands.Paste"></MenuItem>
+                        <MenuItem Header="De_lete" Command="ApplicationCommands.Delete"></MenuItem>
+                        <Separator></Separator>
+                        <MenuItem Header="_Find..." Command="ApplicationCommands.Find"></MenuItem>
+                        <MenuItem Header="Find _Next"></MenuItem>
+                        <MenuItem Header="_Replace..." Command="ApplicationCommands.Replace"></MenuItem>
+                        <MenuItem Header="_Go To..."></MenuItem>
+                        <Separator></Separator>
+                        <MenuItem Header="Select _All" Command="ApplicationCommands.SelectAll"></MenuItem>
+                        <MenuItem Header="Time/_Date" ></MenuItem>
+                    </MenuItem>
+                    <!--Format-->
+                    <MenuItem Header="F_ormat" Style="{StaticResource ResourceKey=menu-item}">
+                        <MenuItem Header="_Word Wrap"></MenuItem>
+                        <MenuItem Header="_Font..."></MenuItem>
+                    </MenuItem>
+                    <!--View-->
+                    <MenuItem Header="_View" Style="{StaticResource ResourceKey=menu-item}">
+                        <MenuItem Header="_Status Bar"></MenuItem>
+                    </MenuItem>
+                    <!--Help-->
+                    <MenuItem Header="_Help" Style="{StaticResource ResourceKey=menu-item}">
+                        <MenuItem Header="View _Help"></MenuItem>
+                        <Separator></Separator>
+                        <MenuItem Header="_About Notepad"></MenuItem>
+                    </MenuItem>
+                </Menu>
+            </Border>
+        </Grid>
+
+        <!--Text Document-->
+        <TextBox x:Name="txbData" 
+                 AcceptsReturn="True" AcceptsTab="True" 
+                 ScrollViewer.CanContentScroll="True" 
+                 VerticalScrollBarVisibility="Visible"
+                 Focusable="True"
+                 HorizontalScrollBarVisibility="Visible"
+                 />
+    </DockPanel>
+</Window>

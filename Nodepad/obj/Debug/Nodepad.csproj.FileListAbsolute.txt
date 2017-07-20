@@ -1,0 +1,14 @@
+D:\hoc tap\C#\BaiTap\WPF Practice\Nodepad\Nodepad\bin\Debug\Nodepad.exe.config
+D:\hoc tap\C#\BaiTap\WPF Practice\Nodepad\Nodepad\bin\Debug\Nodepad.exe
+D:\hoc tap\C#\BaiTap\WPF Practice\Nodepad\Nodepad\bin\Debug\Nodepad.pdb
+D:\hoc tap\C#\BaiTap\WPF Practice\Nodepad\Nodepad\obj\Debug\Nodepad.csprojResolveAssemblyReference.cache
+D:\hoc tap\C#\BaiTap\WPF Practice\Nodepad\Nodepad\obj\Debug\MainWindow.g.cs
+D:\hoc tap\C#\BaiTap\WPF Practice\Nodepad\Nodepad\obj\Debug\App.g.cs
+D:\hoc tap\C#\BaiTap\WPF Practice\Nodepad\Nodepad\obj\Debug\Nodepad_MarkupCompile.cache
+D:\hoc tap\C#\BaiTap\WPF Practice\Nodepad\Nodepad\obj\Debug\Nodepad_MarkupCompile.lref
+D:\hoc tap\C#\BaiTap\WPF Practice\Nodepad\Nodepad\obj\Debug\MainWindow.baml
+D:\hoc tap\C#\BaiTap\WPF Practice\Nodepad\Nodepad\obj\Debug\Nodepad.g.resources
+D:\hoc tap\C#\BaiTap\WPF Practice\Nodepad\Nodepad\obj\Debug\Nodepad.Properties.Resources.resources
+D:\hoc tap\C#\BaiTap\WPF Practice\Nodepad\Nodepad\obj\Debug\Nodepad.csproj.GenerateResource.Cache
+D:\hoc tap\C#\BaiTap\WPF Practice\Nodepad\Nodepad\obj\Debug\Nodepad.exe
+D:\hoc tap\C#\BaiTap\WPF Practice\Nodepad\Nodepad\obj\Debug\Nodepad.pdb
