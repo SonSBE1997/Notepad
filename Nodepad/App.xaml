@@ -22,5 +22,18 @@
                 </DataTrigger>
             </Style.Triggers>
         </Style>
+        <!--data trigger - status bar-->
+        <Style TargetType="StatusBar">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding ElementName=mnistatus, Path=IsChecked}" Value="True">
+                    <Setter Property="Visibility" Value="Visible"></Setter>
+                </DataTrigger>
+
+                <DataTrigger Binding="{Binding ElementName=mnistatus, Path=IsChecked}" Value="False">
+                    <Setter Property="Visibility" Value="Collapsed"></Setter>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        
     </Application.Resources>
 </Application>

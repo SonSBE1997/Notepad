@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Nodepad"
         xmlns:self="clr-namespace:Nodepad.DAO"
         mc:Ignorable="d"
-        Title="Untitled - Notepad" Height="350" Width="500" 
+        Title="Untitled - Notepad" Height="auto" Width="700" 
         Icon="Resource/notepad.ico" 
         Closing="Window_Closing"
         Loaded="Window_Loaded">
@@ -73,7 +73,7 @@
                     </MenuItem>
                     <!--View-->
                     <MenuItem Header="_View" Style="{StaticResource ResourceKey=menu-item}">
-                        <MenuItem Header="_Status Bar"  IsCheckable="True"></MenuItem>
+                        <MenuItem x:Name="mnistatus" Header="_Status Bar"  IsCheckable="True"></MenuItem>
                     </MenuItem>
                     <!--Help-->
                     <MenuItem Header="_Help" Style="{StaticResource ResourceKey=menu-item}">
@@ -89,7 +89,7 @@
         <Grid x:Name="gridContent">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"></RowDefinition>
-                <!--<RowDefinition Height="20" x:Name="row"></RowDefinition>-->
+                <RowDefinition Height="Auto" x:Name="row"></RowDefinition>
             </Grid.RowDefinitions>
             <!--Text Document-->
             <TextBox x:Name="txbData"
@@ -99,7 +99,7 @@
                  Focusable="True"
                  HorizontalScrollBarVisibility="Visible"
                  />
-            <!--<StatusBar x:Name="status" Height="20" Grid.Row="1" Visibility="Collapsed"/>-->
+            <StatusBar x:Name="status" Height="20" Grid.Row="1"/>
         </Grid>
     </DockPanel>
 </Window>

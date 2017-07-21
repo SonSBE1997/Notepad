@@ -13,3 +13,5 @@ D:\hoc tap\C#\BaiTap\WPF Practice\Nodepad\Nodepad\obj\Debug\Notepad.csproj.Gener
 D:\hoc tap\C#\BaiTap\WPF Practice\Nodepad\Nodepad\obj\Debug\Nodepad.exe
 D:\hoc tap\C#\BaiTap\WPF Practice\Nodepad\Nodepad\obj\Debug\Nodepad.pdb
 D:\hoc tap\C#\BaiTap\WPF Practice\Nodepad\Nodepad\obj\Debug\Notepad.csprojResolveAssemblyReference.cache
+D:\hoc tap\C#\BaiTap\WPF Practice\Nodepad\Nodepad\obj\Debug\DAO\MyFont.g.cs
+D:\hoc tap\C#\BaiTap\WPF Practice\Nodepad\Nodepad\obj\Debug\DAO\MyFont.baml

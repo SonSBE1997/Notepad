@@ -199,7 +199,6 @@ namespace Nodepad
 
         private void PageSetupCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-
         }
 
         private void ExitCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
@@ -260,7 +259,13 @@ namespace Nodepad
         #region Menu - Format
         private void FontCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-
+            MyFont myFont = new MyFont();
+            if (myFont.ShowDialog() == true)
+            {
+                txbData.FontFamily = myFont.FontFamily;
+                txbData.FontSize = myFont.FontSize;
+                txbData.FontStyle = myFont.FontStyle;
+            }
         }
         #endregion
 

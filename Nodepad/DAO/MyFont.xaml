@@ -1,0 +1,60 @@
+﻿<Window x:Class="Nodepad.DAO.MyFont"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Nodepad.DAO"
+        mc:Ignorable="d"
+        Title="Font" WindowStartupLocation="CenterOwner" Height="475" Width="445"
+        Loaded="Window_Loaded"
+        ContentRendered="Window_ContentRendered"
+        ResizeMode="NoResize">
+    <Grid>
+        <!--Row-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <!--Column-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <!--Content-->
+        <!--Row 1 - Label -->
+        <Label Content="_Font:" Margin="10 10 10 0"></Label>
+        <Label Content="Font st_yle:" Grid.Column="1" Margin="10 10 0 0"></Label>
+        <Label Content="_Size:" Grid.Column="2" Margin="10 10 10 0"></Label>
+        <!--Row 2 Text Box-->
+        
+        
+        <!--Row 3 - List Box-->
+        <ListBox x:Name="libFontFamily" Grid.Row="2" Width="175" Margin="10 10 0 0" ScrollViewer.CanContentScroll="True"></ListBox>
+        <ListBox x:Name="libFontStyle" Grid.Row="2" Grid.Column="1" Width="130" Margin="15 10 0 0" ScrollViewer.CanContentScroll="True"></ListBox>
+        <ListBox x:Name="libFontSize" Grid.Row="2" Grid.Column="2" Width="60" Margin="0 10 10 0" ScrollViewer.CanContentScroll="True"></ListBox>
+        <!--Row 4-->
+        <Grid Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3" Height="70">
+            <Border BorderThickness="1" BorderBrush="Gray" Opacity="0.7" Width="207" Margin="4 10 10 0">
+                <TextBlock x:Name="txblDemo"  TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Text="AaBbYyZz"></TextBlock>
+            </Border>
+        </Grid>
+        <!--Row 5 - Label -->
+        <Label Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="4" Content="Sc_ript:" Margin="10 5 0 0"></Label>
+        <!--Row 6 - Combo Box-->
+        <ComboBox  Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="5" Margin="13 0 10 0"></ComboBox>
+        <!--Row 7-->
+        <TextBlock Grid.Row="6" Margin="10 50 10 10"><Hyperlink NavigateUri="C:\Windows\Fonts" RequestNavigate="Hyperlink_RequestNavigate">Show more fonts</Hyperlink></TextBlock>
+        <!-- Row 8-->
+        <WrapPanel Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" Margin="0 10 10 10" HorizontalAlignment="Right">
+            <Button IsDefault="True" Content="OK" Height="23" Width="80" Click="Button_Click"></Button>
+            <Button IsCancel="True" Content="Cancel" Height="23" Width="80" Margin="10 0 0 0"></Button>
+        </WrapPanel>
+    </Grid>
+</Window>

@@ -58,6 +58,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="DAO\MyFont.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -67,6 +71,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DAO\CustomCommand.cs" />
+    <Compile Include="DAO\MyFont.xaml.cs">
+      <DependentUpon>MyFont.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DAO\OpenFileDocument.cs" />
     <Compile Include="DAO\SaveFileDocument.cs" />
     <Compile Include="MainWindow.xaml.cs">
@@ -108,9 +115,7 @@
   <ItemGroup>
     <Resource Include="notepad.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DTO\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
