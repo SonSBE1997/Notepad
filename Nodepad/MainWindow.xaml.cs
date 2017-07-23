@@ -260,11 +260,25 @@ namespace Nodepad
         private void FontCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             MyFont myFont = new MyFont();
+            myFont.Owner = this;
+            this.Focusable = false;
             if (myFont.ShowDialog() == true)
             {
-                txbData.FontFamily = myFont.FontFamily;
-                txbData.FontSize = myFont.FontSize;
-                txbData.FontStyle = myFont.FontStyle;
+                txbData.FontFamily = new FontFamily(myFont.MyFontFamily);
+                txbData.FontSize = double.Parse(myFont.MyFontSize);
+                switch (myFont.MyFontStyle)
+                {
+                    case "Italic":
+                        this.FontStyle = FontStyles.Italic;
+                        break;
+                    case "Normal":
+                        this.FontStyle = FontStyles.Normal;
+                        break;
+                    case "Oblique":
+                        this.FontStyle = FontStyles.Oblique;
+                        break;
+                }
+                this.Focusable = true;
             }
         }
         #endregion
@@ -277,7 +291,9 @@ namespace Nodepad
 
         private void AboutNotepadCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-
+            Menu_Item_Help help = new Menu_Item_Help();
+            help.Owner = this;
+            help.ShowDialog();
         }
 
         #endregion

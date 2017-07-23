@@ -12,7 +12,7 @@
             </Style.Triggers>
         </Style>
         <!--data trigger - textbox-->
-        <Style TargetType="TextBox">
+        <Style TargetType="TextBox" x:Key="txb">
             <Style.Triggers>
                 <DataTrigger Binding="{Binding ElementName=mniWordWrap , Path=IsChecked}" Value="True">
                     <Setter Property="TextWrapping" Value="Wrap"></Setter>

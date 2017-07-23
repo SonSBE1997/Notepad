@@ -97,6 +97,7 @@
                  ScrollViewer.CanContentScroll="True" 
                  VerticalScrollBarVisibility="Visible"
                  Focusable="True"
+                 Style="{StaticResource txb}"
                  HorizontalScrollBarVisibility="Visible"
                  />
             <StatusBar x:Name="status" Height="20" Grid.Row="1"/>

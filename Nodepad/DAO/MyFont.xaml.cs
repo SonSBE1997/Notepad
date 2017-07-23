@@ -31,7 +31,7 @@ namespace Nodepad.DAO
                 return myFontFamily;
             }
 
-            set
+            private set
             {
                 myFontFamily = value;
             }
@@ -44,7 +44,7 @@ namespace Nodepad.DAO
                 return myFontStyle;
             }
 
-            set
+            private set
             {
                 myFontStyle = value;
             }
@@ -57,7 +57,7 @@ namespace Nodepad.DAO
                 return myFontSize;
             }
 
-            set
+            private set
             {
                 myFontSize = value;
             }
@@ -79,41 +79,64 @@ namespace Nodepad.DAO
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            //cbFontSize.ItemsSource = new List<float>() { 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 36, 48, 72 };
-            //cbFontSize.SelectedIndex = 4;
+            libFontSize.ItemsSource = new List<double>() { 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 36, 48, 72 };
+            libFontSize.SelectedIndex = 4;
 
-            //// Custom Font
-            ////CustomFont customFont = new CustomFont();
-            //cbFontFamily.ItemsSource = Fonts.SystemFontFamilies.OrderBy(_ => _.Source);
-            //cbFontFamily.SelectedIndex = 0;
-            //cbFontStyle.ItemsSource = new List<string>() { FontStyles.Italic.ToString(), FontStyles.Normal.ToString(), FontStyles.Oblique.ToString() };
-            //cbFontStyle.SelectedIndex = 1;
+            libFontFamily.ItemsSource = Fonts.SystemFontFamilies.OrderBy(_ => _.Source); ;
+            libFontFamily.SelectedIndex = 0;
+
+            libFontStyle.ItemsSource = new List<string>() { FontStyles.Italic.ToString(), FontStyles.Normal.ToString(), FontStyles.Oblique.ToString() };
+            libFontStyle.SelectedIndex = 1;
+
+            cbScript.ItemsSource = new List<string>() { "Western" };
+            cbScript.SelectedIndex = 0;
         }
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            if (!CheckFont()) return;
             this.DialogResult = true;
+        }
+
+        bool CheckFont()
+        {
+            var temp = Fonts.SystemFontFamilies.OrderBy(_ => _.Source);
+            if (temp.Any(_ => _.Source.Equals(txbFontFamily.Text)) == false)
+            {
+                MessageBox.Show("There is no font with that name.\r\nChoose a font from the list of fonts.", "Font", MessageBoxButton.OK, MessageBoxImage.Information);
+                txbFontFamily.Focus();
+                txbFontFamily.SelectAll();
+                return false;
+            }
+
+            double size;
+            if (Double.TryParse(txbFontSize.Text, out size) == false)
+            {
+                MessageBox.Show("Size must be a number.", "Font", MessageBoxButton.OK, MessageBoxImage.Information);
+                txbFontSize.Focus();
+                txbFontSize.SelectAll();
+                return false;
+            }
+
+            if (txbFontStyle.Text.Equals("Italic") == false && txbFontStyle.Text.Equals("Oblique") == false && txbFontStyle.Text.Equals("Normal") == false)
+            {
+                MessageBox.Show("This font is not availabel in that style.\r\nChoose a style from the list of styles.", "Font", MessageBoxButton.OK, MessageBoxImage.Information);
+                txbFontStyle.Focus();
+                txbFontStyle.SelectAll();
+                return false;
+            }
+
+            MyFontFamily = libFontFamily.SelectedItem.ToString();
+            MyFontStyle = libFontStyle.SelectedItem.ToString();
+            MyFontSize = libFontSize.SelectedItem.ToString();
+            return true;
         }
 
         private void Window_ContentRendered(object sender, EventArgs e)
         {
-            //MyFontFamily = cbFontFamily.SelectedItem.ToString();
-            //MyFontStyle = cbFontStyle.SelectedItem.ToString();
-            //MyFontSize = cbFontSize.SelectedItem.ToString();
+            txbFontFamily.SelectAll();
+            txbFontFamily.Focus();
         }
     }
-
-    /////<summary>
-    ///// Class MyFont has font family and font style
-    ///// </summary>
-    //public class CustomFont
-    //{
-    //    public List<string> MyFontFamily;
-    //    public List<string> MyFontStyle;
-    //    public CustomFont()
-    //    {
-    //        MyFontFamily = new List<string>();
-    //        MyFontStyle = new List<string>();
-    //    }
-    //}
 }
